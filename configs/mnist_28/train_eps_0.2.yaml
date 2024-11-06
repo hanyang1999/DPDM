@@ -1,6 +1,6 @@
 setup:
   runner: train_dpdm_base
-  n_gpus_per_node: 8
+  n_gpus_per_node: 7
   n_nodes: 1
   node_rank: 0
   master_address: '127.0.0.1'
@@ -42,7 +42,7 @@ sampler:
   fid_batch_size: 64
 train:
   seed: 0
-  batch_size: 4096
+  batch_size: 2048
   n_epochs: 300
   log_freq: 100
   snapshot_freq: 1000
@@ -52,15 +52,21 @@ train:
   fid_freq: 10000
   fid_samples: 5000
   fid_threshold: 1
+# loss: 
+#   version: v
+#   logsnr_min: -9.
+#   logsnr_max: 13.
+#   n_noise_samples: 32
+#   n_classes: 10
 loss: 
-  version: v
-  logsnr_min: -9.
-  logsnr_max: 13.
+  version: edm
+  p_mean: -1.2
+  p_std: 1.2
   n_noise_samples: 32
   n_classes: 10
 dp:
   max_grad_norm: 1.
   delta: 1e-5
-  epsilon: 10.
+  epsilon: 0.2
   max_physical_batch_size: 8192
   n_splits: 4

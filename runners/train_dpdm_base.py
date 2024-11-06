@@ -5,6 +5,7 @@ import numpy as np
 import torch.distributed as dist
 import pickle
 import torchvision
+from tqdm import tqdm
 
 from model.ncsnpp import NCSNpp
 from stylegan3.dataset import ImageFolderDataset
@@ -145,7 +146,7 @@ def training(config, workdir, mode):
                 optimizer=optimizer,
                 n_splits=config.dp.n_splits if config.dp.n_splits > 0 else None) as memory_safe_data_loader:
 
-            for _, (train_x, train_y) in enumerate(memory_safe_data_loader):
+            for _, (train_x, train_y) in tqdm(enumerate(memory_safe_data_loader), total=len(memory_safe_data_loader), desc=f"Epoch {epoch + 1}/{config.train.n_epochs}"):
                 if state['step'] % config.train.snapshot_freq == 0 and state['step'] >= config.train.snapshot_threshold and config.setup.global_rank == 0:
                     logging.info(
                         'Saving snapshot checkpoint and sampling single batch at iteration %d.' % state['step'])

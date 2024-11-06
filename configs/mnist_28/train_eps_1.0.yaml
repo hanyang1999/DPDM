@@ -1,6 +1,6 @@
 setup:
   runner: train_dpdm_base
-  n_gpus_per_node: 8
+  n_gpus_per_node: 7
   n_nodes: 1
   node_rank: 0
   master_address: '127.0.0.1'
@@ -42,7 +42,7 @@ sampler:
   fid_batch_size: 64
 train:
   seed: 0
-  batch_size: 4096
+  batch_size: 2048
   n_epochs: 300
   log_freq: 100
   snapshot_freq: 1000

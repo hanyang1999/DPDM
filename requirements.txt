@@ -8,4 +8,4 @@ tqdm==4.62.2
 scipy==1.7.1
 matplotlib==3.6.1
 ninja==1.10.2
--e git+https://github.com/timudk/opacus_dpdm.git@dpdm#egg=opacus
+#-e git+https://github.com/timudk/opacus_dpdm.git@dpdm#egg=opacus

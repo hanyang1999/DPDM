@@ -1,3 +1,7 @@
 *__pycache__*
 *.pyc
 .vscode/*
+data
+mnist_eps_1.0
+mnist_eps_10.0
+toy_data
